@@ -26,6 +26,8 @@ const Form = () => {
 
   const submitHandler = e => {
     e.preventDefault();
+    const contact = { name: name, number: number };
+
     const newArr = itemsContact.map(({ name }) => name.toLowerCase());
     if (newArr.includes(name.toLowerCase())) {
       return Report.failure(
@@ -35,7 +37,7 @@ const Form = () => {
       );
     }
 
-    dispatch(contactAdd(name, number));
+    dispatch(contactAdd(contact));
     setName('');
     setNumber('');
   };
