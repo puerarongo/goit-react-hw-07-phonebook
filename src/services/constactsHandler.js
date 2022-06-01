@@ -1,17 +1,15 @@
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
-const contactsHandler = (state, action) => {
-  console.log(state.name);
-  const nameArr = state.map(elem => elem.name.toLowerCase());
-  console.log(nameArr);
-  if (nameArr.includes(action.name.toLowerCase())) {
+const contactsHandler = (items, name) => {
+  const nameArr = items.map(elem => elem.name.toLowerCase());
+  if (nameArr.includes(name.toLowerCase())) {
     return Report.failure(
       'Failure',
-      `${action.name} is already in contacts!`,
+      `${name} is already in contacts!`,
       'Try again'
     );
   } else {
-    return [...state, action];
+    return name;
   }
 };
 

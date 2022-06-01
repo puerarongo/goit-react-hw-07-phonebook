@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { contactAdd } from 'redux/operations/contacts-operation';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 import styles from './Form.module.css';
 
 const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const itemsContact = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
 
   // todo Function
@@ -24,6 +26,14 @@ const Form = () => {
 
   const submitHandler = e => {
     e.preventDefault();
+    const newArr = itemsContact.map(({ name }) => name.toLowerCase());
+    if (newArr.includes(name.toLowerCase())) {
+      return Report.failure(
+        'Failure',
+        `${name} is already in contacts!`,
+        'Try again'
+      );
+    }
 
     dispatch(contactAdd(name, number));
     setName('');

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { contactDelete } from 'redux/operations/contacts-operation';
+import {
+  contactsFetch,
+  contactDelete,
+} from 'redux/operations/contacts-operation';
 import styles from './ContactList.module.css';
 
 const ContactList = () => {
@@ -11,6 +14,10 @@ const ContactList = () => {
   const dataContacts = itemsContact.filter(({ name }) =>
     name.toLowerCase().includes(filterContact.toLowerCase())
   );
+
+  useEffect(() => {
+    dispatch(contactsFetch());
+  }, [dispatch]);
 
   const deleteHandler = id => dispatch(contactDelete(id));
 
