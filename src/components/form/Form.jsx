@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { contactsAdd } from 'redux/actions/contacts-actions';
+import { contactAdd } from 'redux/operations/contacts-operation';
 import styles from './Form.module.css';
 
 const Form = () => {
@@ -25,7 +25,7 @@ const Form = () => {
   const submitHandler = e => {
     e.preventDefault();
 
-    dispatch(contactsAdd(name, number));
+    dispatch(contactAdd(name, number));
     setName('');
     setNumber('');
   };

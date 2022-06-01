@@ -1,14 +1,11 @@
 import { createAction } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
 
-export const contactsAdd = createAction('items/add', (name, number) => {
-  return {
-    payload: {
-      id: nanoid(),
-      name: name,
-      number: number,
-    },
-  };
-});
-export const contactsDelete = createAction('items/delete');
+export const addContactPadding = createAction('items/addContactPadding');
+export const addContactSuccess = createAction('items/addContactSuccess');
+export const addContactError = createAction('items/addContactError');
+
+export const deleteContactPadding = createAction('items/deleteContactPadding');
+export const deleteContactSuccess = createAction('items/deleteContactSuccess');
+export const deleteContactError = createAction('items/deleteContactError');
+
 export const filtration = createAction('items/filtration');

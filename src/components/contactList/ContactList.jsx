@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { contactsDelete } from 'redux/actions/contacts-actions';
+import { contactDelete } from 'redux/operations/contacts-operation';
 import styles from './ContactList.module.css';
 
 const ContactList = () => {
@@ -12,16 +12,16 @@ const ContactList = () => {
     name.toLowerCase().includes(filterContact.toLowerCase())
   );
 
-  const deleteHandler = id => dispatch(contactsDelete(id));
+  const deleteHandler = id => dispatch(contactDelete(id));
 
   return (
     <div className={styles.container}>
       <ul>
-        {dataContacts.map(({ id, name, number }) => {
+        {dataContacts.map(({ id, name, phone }) => {
           return (
             <li key={id} className={styles.contact}>
               <span>
-                {name}: {number}
+                {name}: {phone}
               </span>
               <button
                 className={styles.button__delete}
