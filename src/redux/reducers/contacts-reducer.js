@@ -23,12 +23,6 @@ const loading = createReducer(false, {
   [contactsFetch.pending]: () => true,
   [contactsFetch.fulfilled]: () => false,
   [contactsFetch.rejected]: () => false,
-  [contactAdd.pending]: () => true,
-  [contactAdd.fulfilled]: () => false,
-  [contactAdd.rejected]: () => false,
-  [contactDelete.pending]: () => true,
-  [contactDelete.fulfilled]: () => false,
-  [contactDelete.rejected]: () => false,
 });
 
 export default combineReducers({
